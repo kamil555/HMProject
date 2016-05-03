@@ -16,4 +16,6 @@
     </string>
     <string name="title_activity_view">View</string>
     <string name="title_activity_view_all">ViewAll</string>
+    <string name="title_activity_high_score">HighScore</string>
+    <string name="action_settings">Settings</string>
 </resources>
