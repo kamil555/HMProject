@@ -3,34 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HighscoreDetailFragment">
+    tools:context=".BookDetailFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/highScoreFragment_booktitle" />
+        android:id="@+id/BookFragment_booktitle" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/highScoreFragment_ISBN" />
+        android:id="@+id/BookFragment_ISBN" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/highScoreFragment_owner" />
+        android:id="@+id/BookFragment_owner" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/highScoreFragment_major" />
+        android:id="@+id/BookFragment_major" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/highScoreFragment_phone" />
+        android:id="@+id/BookFragment_phone" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/highScoreFragment_email" />
+        android:id="@+id/BookFragment_email" />
 </LinearLayout>

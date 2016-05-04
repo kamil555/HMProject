@@ -5,11 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".HighScoreActivity">
+    tools:context=".BookActivity">
 
-
-
-    <include layout="@layout/content_high_score" />
+    <include layout="@layout/content_book" />
 
 </android.support.design.widget.CoordinatorLayout>
 
