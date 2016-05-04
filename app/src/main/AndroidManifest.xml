@@ -19,8 +19,7 @@
             android:name=".ViewAll"
             android:label="@string/title_activity_view_all"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".FarmActivity"></activity>
-        <activity android:name=".HighScoreActivity"/>
+        <activity android:name=".BookActivity"/>
 
     </application>
 

@@ -8,21 +8,21 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import team6.tacoma.uw.edu.hmproject.highscore.HighScore;
+import team6.tacoma.uw.edu.hmproject.book.Book;
 
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link HighScore} and makes a call to the
- * specified {@link HighScoreListFragment.OnListFragmentInteractionListener}.
+ * {@link RecyclerView.Adapter} that can display a {@link Book} and makes a call to the
+ * specified {@link BookListFragment.OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyscoreRecyclerViewAdapter extends RecyclerView.Adapter<MyscoreRecyclerViewAdapter.ViewHolder> {
+public class MybookRecyclerViewAdapter extends RecyclerView.Adapter<MybookRecyclerViewAdapter.ViewHolder> {
 
-    private final List<HighScore> mValues;
-    private final HighScoreListFragment.OnListFragmentInteractionListener mListener;
+    private final List<Book> mValues;
+    private final BookListFragment.OnListFragmentInteractionListener mListener;
 
 
-    public MyscoreRecyclerViewAdapter(List<HighScore> items, HighScoreListFragment.OnListFragmentInteractionListener listener) {
+    public MybookRecyclerViewAdapter(List<Book> items, BookListFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -30,7 +30,7 @@ public class MyscoreRecyclerViewAdapter extends RecyclerView.Adapter<MyscoreRecy
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_score, parent, false);
+                .inflate(R.layout.fragment_book, parent, false);
         return new ViewHolder(view);
     }
 
@@ -69,7 +69,7 @@ public class MyscoreRecyclerViewAdapter extends RecyclerView.Adapter<MyscoreRecy
         public final TextView mMajor;
         public final TextView mPhone;
         public final TextView mEmail;
-        public HighScore mItem;
+        public Book mItem;
 
         public ViewHolder(View view) {
             super(view);

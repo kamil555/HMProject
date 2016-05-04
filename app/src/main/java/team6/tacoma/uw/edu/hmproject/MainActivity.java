@@ -1,7 +1,6 @@
 package team6.tacoma.uw.edu.hmproject;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,16 +16,16 @@ public class MainActivity extends AppCompatActivity {
 
         // Now get a handle to any View contained
         // within the main layout you are using
-        View view = findViewById(R.id.button_View);
-
-        View root = view.getRootView();
-        root.setBackgroundColor(getResources().getColor(R.color.mainBackground));
+//        View view = findViewById(R.id.button_View);
+//
+//        View root = view.getRootView();
+//        root.setBackgroundColor(getResources().getColor(R.color.mainBackground));
 
         Button button_View = (Button)findViewById(R.id.button_View);
         button_View.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HighScoreActivity.class);
+                Intent intent = new Intent(getApplicationContext(), BookActivity.class);
                 startActivity(intent);
             }
         });

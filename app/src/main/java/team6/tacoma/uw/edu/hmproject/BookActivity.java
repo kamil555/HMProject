@@ -3,7 +3,6 @@ package team6.tacoma.uw.edu.hmproject;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -17,31 +16,28 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import team6.tacoma.uw.edu.hmproject.highscore.HighScore;
+import team6.tacoma.uw.edu.hmproject.book.Book;
 
 
-public class HighScoreActivity extends AppCompatActivity implements HighScoreListFragment.OnListFragmentInteractionListener {
+public class BookActivity extends AppCompatActivity implements BookListFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_high_score);
+        setContentView(R.layout.activity_book);
 
         if (savedInstanceState == null || getSupportFragmentManager().findFragmentById(R.id.list) == null) {
-            HighScoreListFragment courseListFragment = new HighScoreListFragment();
+            BookListFragment courseListFragment = new BookListFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.highScoreActivity_container, courseListFragment)
+                    .add(R.id.BookActivity_container, courseListFragment)
                     .commit();
         }
-
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_highscore, menu);
+        getMenuInflater().inflate(R.menu.menu_book, menu);
         return true;
     }
 
@@ -60,14 +56,14 @@ public class HighScoreActivity extends AppCompatActivity implements HighScoreLis
         return super.onOptionsItemSelected(item);
     }
     @Override
-    public void onListFragmentInteraction(HighScore item) {
-        HighscoreDetailFragment highscoreDetailFragment = new HighscoreDetailFragment();
+    public void onListFragmentInteraction(Book item) {
+        BookDetailFragment bookDetailFragment = new BookDetailFragment();
         Bundle args = new Bundle();
-        args.putSerializable(HighscoreDetailFragment.HIGHSCORE_ITEM_SELECTED, item);
-        highscoreDetailFragment.setArguments(args);
+        args.putSerializable(BookDetailFragment.BOOK_ITEM_SELECTED, item);
+        bookDetailFragment.setArguments(args);
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.highScoreActivity_container, highscoreDetailFragment)
+                .replace(R.id.BookActivity_container, bookDetailFragment)
                 .addToBackStack(null)
                 .commit();
     }

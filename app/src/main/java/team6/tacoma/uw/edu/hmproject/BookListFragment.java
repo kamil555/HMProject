@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import team6.tacoma.uw.edu.hmproject.highscore.HighScore;
+import team6.tacoma.uw.edu.hmproject.book.Book;
 
 /**
  * A fragment representing a list of Items.
@@ -28,7 +28,7 @@ import team6.tacoma.uw.edu.hmproject.highscore.HighScore;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class HighScoreListFragment extends Fragment {
+public class BookListFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -36,20 +36,20 @@ public class HighScoreListFragment extends Fragment {
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private RecyclerView mRecyclerView;
-    private static final String HIGHSCORE_URL
+    private static final String BOOKLIST_URL
             = "http://cssgate.insttech.washington.edu/~hw29/hmproject/han.php?cmd=booklist";
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public HighScoreListFragment() {
+    public BookListFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static HighScoreListFragment newInstance(int columnCount) {
-        HighScoreListFragment fragment = new HighScoreListFragment();
+    public static BookListFragment newInstance(int columnCount) {
+        BookListFragment fragment = new BookListFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -68,7 +68,7 @@ public class HighScoreListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_highscore_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_book_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -82,8 +82,8 @@ public class HighScoreListFragment extends Fragment {
 
         }
 
-        DownloadHighscoreTask task = new DownloadHighscoreTask();
-        task.execute(new String[]{HIGHSCORE_URL});
+        DownloadBookListTask task = new DownloadBookListTask();
+        task.execute(new String[]{BOOKLIST_URL});
 
 
         return view;
@@ -119,9 +119,9 @@ public class HighScoreListFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(HighScore item);
+        void onListFragmentInteraction(Book item);
     }
-    private class DownloadHighscoreTask extends AsyncTask<String, Void, String> {
+    private class DownloadBookListTask extends AsyncTask<String, Void, String> {
         @Override
         protected void onPostExecute(String result) {
             // Something wrong with the network or the URL.
@@ -131,8 +131,8 @@ public class HighScoreListFragment extends Fragment {
                 return;
             }
 
-            List<HighScore> highscoreList = new ArrayList<HighScore>();
-            result = HighScore.parseHighscoreJSONJSON(result, highscoreList);
+            List<Book> bookList = new ArrayList<Book>();
+            result = Book.parseBookJSON(result, bookList);
             // Something wrong with the JSON returned.
             if (result != null) {
                 Toast.makeText(getActivity().getApplicationContext(), result, Toast.LENGTH_LONG)
@@ -141,8 +141,8 @@ public class HighScoreListFragment extends Fragment {
             }
 
             // Everything is good, show the list of courses.
-            if (!highscoreList.isEmpty()) {
-                mRecyclerView.setAdapter(new MyscoreRecyclerViewAdapter(highscoreList, mListener));
+            if (!bookList.isEmpty()) {
+                mRecyclerView.setAdapter(new MybookRecyclerViewAdapter(bookList, mListener));
             }
         }
 
@@ -164,7 +164,7 @@ public class HighScoreListFragment extends Fragment {
                     }
 
                 } catch (Exception e) {
-                    response = "Unable to download the list of highscores, Reason: "
+                    response = "Unable to download the list of booklist, Reason: "
                             + e.getMessage();
                 }
                 finally {
