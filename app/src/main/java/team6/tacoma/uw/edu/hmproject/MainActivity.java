@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
         // Now get a handle to any View contained
@@ -23,11 +23,16 @@ public class MainActivity extends AppCompatActivity {
         root.setBackgroundColor(getResources().getColor(R.color.mainBackground));
 
         Button button_View = (Button)findViewById(R.id.button_View);
+        button_View.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HighScoreActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
-    //View All button
-    public void button_View(View view) {
-        Intent intent = new Intent(this, ViewAll.class);
-        startActivity(intent);
-    }
+
 
 }
