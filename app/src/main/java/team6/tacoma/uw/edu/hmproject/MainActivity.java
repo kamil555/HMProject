@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://developer.android.com/index.html"));
+                intent.setData(Uri.parse("https://docs.google.com/document/d/1bUkN_byWSj3grRf1ZD7o_fkj1t1ioetQAzclAwCpln8/edit?usp=sharing"));
                 startActivity(intent);
             }
         });

@@ -58,7 +58,8 @@
         <TextView android:id="@+id/txthelp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="need help?" />
+            android:text="need help?
+                           click here" />
 
     </LinearLayout>
 
