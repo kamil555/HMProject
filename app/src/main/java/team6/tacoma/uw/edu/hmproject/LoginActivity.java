@@ -147,7 +147,6 @@ public class LoginActivity extends AppCompatActivity {
                             && user.getPassword().equals(mUsers.getPassword())){
                         Toast.makeText(getApplicationContext(), "Login success", Toast.LENGTH_LONG).show();
                         found = true;
-//                        Intent intent = new Intent(getApplicationContext(), FarmActivity.class);
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                         finish();
