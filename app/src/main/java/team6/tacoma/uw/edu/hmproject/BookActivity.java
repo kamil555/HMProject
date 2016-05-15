@@ -135,12 +135,12 @@ public class BookActivity extends AppCompatActivity implements BookListFragment.
         }
     }
 
-    public void addCourse(String url){
-        AddCourseTask task = new AddCourseTask();
-        task.execute(new String[]{url.toString()});
-
-        // Takes you back to the previous fragment by popping the current fragment out.
-        getSupportFragmentManager().popBackStackImmediate();
-
-    }
+//    public void addCourse(String url){
+//        AddCourseTask task = new AddCourseTask();
+//        task.execute(new String[]{url.toString()});
+//
+//        // Takes you back to the previous fragment by popping the current fragment out.
+//        getSupportFragmentManager().popBackStackImmediate();
+//
+//    }
 }

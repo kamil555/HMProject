@@ -20,4 +20,5 @@
     <string name="LOGGEDIN">loggedin</string>
     <string name="action_logout">loggedout</string>
     <string name="LOGIN_FILE">LOGIN_FILE</string>
+    <string name="title_activity_book_add">BookAddActivity</string>
 </resources>

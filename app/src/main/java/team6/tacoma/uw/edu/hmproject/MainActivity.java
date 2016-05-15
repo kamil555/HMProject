@@ -22,6 +22,15 @@ public class MainActivity extends AppCompatActivity {
 //
 //        View root = view.getRootView();
 //        root.setBackgroundColor(getResources().getColor(R.color.mainBackground));
+        Button button_Add =(Button) findViewById(R.id.Add);
+        button_Add.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), BookAdd.class);
+                startActivity(intent);
+            }
+        });
+
 
         Button button_View = (Button) findViewById(R.id.button_View);
         button_View.setOnClickListener(new View.OnClickListener() {

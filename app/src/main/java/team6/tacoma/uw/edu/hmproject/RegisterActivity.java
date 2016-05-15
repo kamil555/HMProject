@@ -23,7 +23,7 @@ import java.net.URLEncoder;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private final static String COURSE_ADD_URL
+    private final static String USER_ADD_URL
             = "http://cssgate.insttech.washington.edu/~hw29/hmproject/register.php?";
     private EditText editText_username;
     private EditText editText_password;
@@ -68,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                String url = buildCourseURL(v);
+                String url = registerURL(v);
                 register(url);
 
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -88,8 +88,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private String buildCourseURL(View v) {
-        StringBuilder sb = new StringBuilder(COURSE_ADD_URL);
+    private String registerURL(View v) {
+        StringBuilder sb = new StringBuilder(USER_ADD_URL);
         try {
             String username = editText_username.getText().toString();
             sb.append("username=");
