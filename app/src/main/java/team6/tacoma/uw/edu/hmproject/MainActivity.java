@@ -8,13 +8,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
+
+    public static String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //getSupportActionBar().hide();
+//        mBundle = new Bundle();
         setContentView(R.layout.activity_main);
+
 
         // Now get a handle to any View contained
         // within the main layout you are using

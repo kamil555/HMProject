@@ -29,8 +29,8 @@ public class SearchBookList extends Fragment {
     private OnListFragmentInteractionListener mListener;
     private RecyclerView mRecyclerView;
     private static final String SEARCH_URL
-            = "http://cssgate.insttech.washington.edu/~hw29/hmproject/han.php?cmd=";
-    public String Key_Word ="booklist";
+            = "http://cssgate.insttech.washington.edu/~hw29/hmproject/search1.php?KeyWord=";
+    public String Key_Word;
     public SearchBookList() {
         // Required empty public constructor
     }
@@ -56,6 +56,9 @@ public class SearchBookList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_book_list, container, false);
+//        MainActivity.mBundle.putString("Key", "hello");
+//        Key_Word = MainActivity.mBundle.getString("Key");
+        Key_Word = MainActivity.key;
         // Inflate the layout for this fragment
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -66,9 +69,9 @@ public class SearchBookList extends Fragment {
                 mRecyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
         }
-        DownloadSearchListTask task = new DownloadSearchListTask();
-        task.execute(new String[]{SEARCH_URL+Key_Word});
 
+        DownloadSearchListTask task = new DownloadSearchListTask();
+        task.execute(new String[]{SEARCH_URL + Key_Word});
 
         return view;
     }
@@ -88,7 +91,7 @@ public class SearchBookList extends Fragment {
         super.onDetach();
         mListener = null;
     }
-    public interface OnListFragmentInteractionListener extends BookListFragment.OnListFragmentInteractionListener {
+    public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Book item);
     }
@@ -115,7 +118,7 @@ public class SearchBookList extends Fragment {
 
             // Everything is good, show the list of courses.
             if (!bl.isEmpty()) {
-                mRecyclerView.setAdapter(new MybookRecyclerViewAdapter(bl, mListener));
+                mRecyclerView.setAdapter(new MySearchRVAdapter(bl, mListener));
             }
         }
 
