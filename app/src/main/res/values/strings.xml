@@ -21,4 +21,8 @@
     <string name="action_logout">loggedout</string>
     <string name="LOGIN_FILE">LOGIN_FILE</string>
     <string name="title_activity_book_add">BookAddActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_search">SearchActivity</string>
 </resources>

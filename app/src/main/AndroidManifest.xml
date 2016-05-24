@@ -23,10 +23,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".BookAdd"/>
+        <activity android:name=".BookAdd" />
         <activity android:name=".BookActivity" />
         <activity android:name=".RegisterActivity" />
-
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/title_activity_search"
+            android:parentActivityName=".SearchActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="team6.tacoma.uw.edu.hmproject.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

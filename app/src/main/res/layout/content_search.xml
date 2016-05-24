@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/SearchActivity_content"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="team6.tacoma.uw.edu.hmproject.SearchActivity"
+    tools:showIn="@layout/activity_search">
+
+
+    <EditText android:id="@+id/txtSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button android:id="@+id/button_search_fuction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SEARCH"
+        android:layout_gravity="right" />
+
+    <!--<fragment-->
+        <!--android:id="@+id/fragment_place"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
+    <!--</fragment>-->
+
+
+</LinearLayout>

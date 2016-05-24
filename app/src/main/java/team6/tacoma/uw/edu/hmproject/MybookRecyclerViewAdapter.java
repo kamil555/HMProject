@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import java.util.List;
 
 import team6.tacoma.uw.edu.hmproject.book.Book;
@@ -20,12 +19,13 @@ public class MybookRecyclerViewAdapter extends RecyclerView.Adapter<MybookRecycl
 
     private final List<Book> mValues;
     private final BookListFragment.OnListFragmentInteractionListener mListener;
-
+//    public final SearchBookList.OnListFragmentInteractionListener nListener;
 
     public MybookRecyclerViewAdapter(List<Book> items, BookListFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

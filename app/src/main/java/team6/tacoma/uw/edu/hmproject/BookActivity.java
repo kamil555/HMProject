@@ -27,9 +27,9 @@ public class BookActivity extends AppCompatActivity implements BookListFragment.
         setContentView(R.layout.activity_book);
 
         if (savedInstanceState == null || getSupportFragmentManager().findFragmentById(R.id.list) == null) {
-            BookListFragment courseListFragment = new BookListFragment();
+            BookListFragment bf = new BookListFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.BookActivity_container, courseListFragment)
+                    .add(R.id.BookActivity_container, bf)
                     .commit();
         }
     }
@@ -68,72 +68,72 @@ public class BookActivity extends AppCompatActivity implements BookListFragment.
                 .commit();
     }
 
-    private class AddCourseTask extends AsyncTask<String, Void, String> {
-
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(String... urls) {
-            String response = "";
-            HttpURLConnection urlConnection = null;
-            for (String url : urls) {
-                try {
-                    URL urlObject = new URL(url);
-                    urlConnection = (HttpURLConnection) urlObject.openConnection();
-
-                    InputStream content = urlConnection.getInputStream();
-
-                    BufferedReader buffer = new BufferedReader(new InputStreamReader(content));
-                    String s = "";
-                    while ((s = buffer.readLine()) != null) {
-                        response += s;
-                    }
-
-                } catch (Exception e) {
-                    response = "Unable to add course, Reason: "
-                            + e.getMessage();
-                } finally {
-                    if (urlConnection != null)
-                        urlConnection.disconnect();
-                }
-            }
-            return response;
-        }
-
-
-        /**
-         * It checks to see if there was a problem with the URL(Network) which is when an
-         * exception is caught. It tries to call the parse Method and checks to see if it was successful.
-         * If not, it displays the exception.
-         *
-         * @param result
-         */
-        @Override
-        protected void onPostExecute(String result) {
-            // Something wrong with the network or the URL.
-            try {
-                JSONObject jsonObject = new JSONObject(result);
-                String status = (String) jsonObject.get("result");
-                if (status.equals("success")) {
-                    Toast.makeText(getApplicationContext(), "Course successfully added!"
-                            , Toast.LENGTH_LONG)
-                            .show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Failed to add: "
-                                    + jsonObject.get("error")
-                            , Toast.LENGTH_LONG)
-                            .show();
-                }
-            } catch (JSONException e) {
-                Toast.makeText(getApplicationContext(), "Something wrong with the data" +
-                        e.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }
-    }
+//    private class AddTask extends AsyncTask<String, Void, String> {
+//
+//
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//        }
+//
+//        @Override
+//        protected String doInBackground(String... urls) {
+//            String response = "";
+//            HttpURLConnection urlConnection = null;
+//            for (String url : urls) {
+//                try {
+//                    URL urlObject = new URL(url);
+//                    urlConnection = (HttpURLConnection) urlObject.openConnection();
+//
+//                    InputStream content = urlConnection.getInputStream();
+//
+//                    BufferedReader buffer = new BufferedReader(new InputStreamReader(content));
+//                    String s = "";
+//                    while ((s = buffer.readLine()) != null) {
+//                        response += s;
+//                    }
+//
+//                } catch (Exception e) {
+//                    response = "Unable to add course, Reason: "
+//                            + e.getMessage();
+//                } finally {
+//                    if (urlConnection != null)
+//                        urlConnection.disconnect();
+//                }
+//            }
+//            return response;
+//        }
+//
+//
+//        /**
+//         * It checks to see if there was a problem with the URL(Network) which is when an
+//         * exception is caught. It tries to call the parse Method and checks to see if it was successful.
+//         * If not, it displays the exception.
+//         *
+//         * @param result
+//         */
+//        @Override
+//        protected void onPostExecute(String result) {
+//            // Something wrong with the network or the URL.
+//            try {
+//                JSONObject jsonObject = new JSONObject(result);
+//                String status = (String) jsonObject.get("result");
+//                if (status.equals("success")) {
+//                    Toast.makeText(getApplicationContext(), "Course successfully added!"
+//                            , Toast.LENGTH_LONG)
+//                            .show();
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "Failed to add: "
+//                                    + jsonObject.get("error")
+//                            , Toast.LENGTH_LONG)
+//                            .show();
+//                }
+//            } catch (JSONException e) {
+//                Toast.makeText(getApplicationContext(), "Something wrong with the data" +
+//                        e.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        }
+//    }
 
 //    public void addCourse(String url){
 //        AddCourseTask task = new AddCourseTask();

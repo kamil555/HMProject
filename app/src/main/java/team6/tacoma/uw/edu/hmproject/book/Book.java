@@ -21,6 +21,7 @@ public class Book implements Serializable {
     private String mMajor;
     private String mPhone_no;
     private String mEmail;
+    private String mKeyWord;
 
 
     public static final String Book_title = "Book_title", ISBN = "ISBN", Owner = "Owner",
@@ -35,8 +36,8 @@ public class Book implements Serializable {
         setmMajor(mMajor);
         setmOwner(mOwner);
         setmPhone_no(mPhone_no);
-
     }
+
 
     public String getmBook_title() {
         return mBook_title;
@@ -85,6 +86,14 @@ public class Book implements Serializable {
 
     public void setmEmail(String mEmail) {
         this.mEmail = mEmail;
+    }
+
+    public String getmKeyWord() {
+        return mKeyWord;
+    }
+
+    public void setmKeyWord(String mKeyWord) {
+        this.mKeyWord = mKeyWord;
     }
 
     /**
