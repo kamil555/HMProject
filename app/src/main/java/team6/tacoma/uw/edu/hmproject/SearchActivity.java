@@ -11,7 +11,7 @@ import android.widget.EditText;
 import team6.tacoma.uw.edu.hmproject.book.Book;
 
 public class SearchActivity extends AppCompatActivity implements SearchBookList.OnListFragmentInteractionListener{
-
+    public static String key;
     public EditText editSearch;
     private Button btnSearch;
 
@@ -38,14 +38,11 @@ public class SearchActivity extends AppCompatActivity implements SearchBookList.
             public void onClick(View v) {
 
                 SearchBookList searchBookList = new SearchBookList();
-                Log.e("text is "+ editSearch.getText().toString(), "text111");
-                MainActivity.key = editSearch.getText().toString();
-                //searchBookList.setArguments(MainActivity.mBundle);
+                SearchActivity.key = editSearch.getText().toString();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.SearchActivity_content, searchBookList)
                         .addToBackStack(null)
                         .commit();
-
             }
         });
 

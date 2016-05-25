@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String key;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -29,7 +29,7 @@ public class SearchBookList extends Fragment {
     private OnListFragmentInteractionListener mListener;
     private RecyclerView mRecyclerView;
     private static final String SEARCH_URL
-            = "http://cssgate.insttech.washington.edu/~hw29/hmproject/search1.php?KeyWord=";
+            = "http://cssgate.insttech.washington.edu/~hw29/hmproject/search1.php?Key_Word=";
     public String Key_Word;
     public SearchBookList() {
         // Required empty public constructor
@@ -56,10 +56,9 @@ public class SearchBookList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_book_list, container, false);
-//        MainActivity.mBundle.putString("Key", "hello");
-//        Key_Word = MainActivity.mBundle.getString("Key");
-        Key_Word = MainActivity.key;
-        // Inflate the layout for this fragment
+
+        Key_Word = SearchActivity.key;
+
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             mRecyclerView = (RecyclerView) view;
@@ -116,7 +115,7 @@ public class SearchBookList extends Fragment {
                 return;
             }
 
-            // Everything is good, show the list of courses.
+            // Everything is good, show the list
             if (!bl.isEmpty()) {
                 mRecyclerView.setAdapter(new MySearchRVAdapter(bl, mListener));
             }
