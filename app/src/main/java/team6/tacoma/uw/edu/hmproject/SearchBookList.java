@@ -28,9 +28,9 @@ public class SearchBookList extends Fragment {
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private RecyclerView mRecyclerView;
-    private static final String SEARCH_URL
-            = "http://cssgate.insttech.washington.edu/~hw29/hmproject/search1.php?Key_Word=";
-    public String Key_Word;
+    private static String SEARCH_URL
+            = "http://cssgate.insttech.washington.edu/~hw29/hmproject/search1.php?KeyWord=";
+    public static String Key_Word;
     public SearchBookList() {
         // Required empty public constructor
     }
@@ -70,9 +70,9 @@ public class SearchBookList extends Fragment {
         }
 
         DownloadSearchListTask task = new DownloadSearchListTask();
-        task.execute(new String[]{SEARCH_URL + Key_Word});
-
+        task.execute(new String[]{SEARCH_URL+Key_Word});
         return view;
+        
     }
     @Override
     public void onAttach(Context context) {

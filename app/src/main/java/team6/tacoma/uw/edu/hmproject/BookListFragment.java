@@ -84,8 +84,6 @@ public class BookListFragment extends Fragment {
 
         DownloadBookListTask task = new DownloadBookListTask();
         task.execute(new String[]{BOOKLIST_URL});
-
-
         return view;
     }
 
