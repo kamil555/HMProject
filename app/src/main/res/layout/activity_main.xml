@@ -23,10 +23,10 @@
             android:layout_height="match_parent"
             android:text="Add a Book"/>
 
-        <Button android:id="@+id/Delete"
+        <Button android:id="@+id/MyBook"
             android:layout_width="140dp"
             android:layout_height="match_parent"
-            android:text="Delete a Book"/>
+            android:text="View My Book"/>
     </LinearLayout>
 
 

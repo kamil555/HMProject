@@ -1,6 +1,8 @@
 package team6.tacoma.uw.edu.hmproject;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String LOGIN_URL
             = "http://cssgate.insttech.washington.edu/~hw29/hmproject/han.php?cmd=users";
-    private Users mUsers;
+    public Users mUsers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,12 +141,17 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // Everything is good, show the list of courses.
             boolean found = false;
             if (!usersList.isEmpty()) {
                 for (Users user : usersList){
                     if (user.getUsername().equals(mUsers.getUsername())
                             && user.getPassword().equals(mUsers.getPassword())){
+                        //save user acount
+                        SharedPreferences sp = getSharedPreferences("Users", 0);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("username", mUsers.getUsername());
+                        editor.commit();
+
                         Toast.makeText(getApplicationContext(), "Login success", Toast.LENGTH_LONG).show();
                         found = true;
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);

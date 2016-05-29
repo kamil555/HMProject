@@ -35,6 +35,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="team6.tacoma.uw.edu.hmproject.MainActivity" />
         </activity>
+        <activity
+            android:name=".ViewMyBookActivity"
+            android:label="@string/title_activity_view_my_book"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="team6.tacoma.uw.edu.hmproject.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

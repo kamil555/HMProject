@@ -1,8 +1,10 @@
 package team6.tacoma.uw.edu.hmproject;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,7 +32,7 @@ public class SearchBookList extends Fragment {
     private RecyclerView mRecyclerView;
     private static String SEARCH_URL
             = "http://cssgate.insttech.washington.edu/~hw29/hmproject/search1.php?KeyWord=";
-    public static String Key_Word;
+    public static String Key_Word = null;
     public SearchBookList() {
         // Required empty public constructor
     }
@@ -57,7 +59,8 @@ public class SearchBookList extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_book_list, container, false);
 
-        Key_Word = SearchActivity.key;
+        Key_Word = MainActivity.key;
+
 
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -90,6 +93,8 @@ public class SearchBookList extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Book item);

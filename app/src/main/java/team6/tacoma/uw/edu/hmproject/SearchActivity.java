@@ -1,6 +1,8 @@
 package team6.tacoma.uw.edu.hmproject;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,17 +13,15 @@ import android.widget.EditText;
 import team6.tacoma.uw.edu.hmproject.book.Book;
 
 public class SearchActivity extends AppCompatActivity implements SearchBookList.OnListFragmentInteractionListener{
-    public static String key;
+
     public EditText editSearch;
     private Button btnSearch;
 
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
 
         editSearch = (EditText)findViewById(R.id.txtSearch);
         btnSearch = (Button)findViewById(R.id.button_search_fuction);
@@ -38,7 +38,7 @@ public class SearchActivity extends AppCompatActivity implements SearchBookList.
             public void onClick(View v) {
 
                 SearchBookList searchBookList = new SearchBookList();
-                SearchActivity.key = editSearch.getText().toString();
+                MainActivity.key = editSearch.getText().toString();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.SearchActivity_content, searchBookList)
                         .addToBackStack(null)
@@ -47,6 +47,7 @@ public class SearchActivity extends AppCompatActivity implements SearchBookList.
         });
 
     }
+
 
     @Override
     public void onListFragmentInteraction(Book item) {

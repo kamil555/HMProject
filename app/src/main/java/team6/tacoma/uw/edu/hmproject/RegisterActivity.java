@@ -1,6 +1,8 @@
 package team6.tacoma.uw.edu.hmproject;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -71,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String url = registerURL(v);
                 register(url);
 
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -98,8 +100,6 @@ public class RegisterActivity extends AppCompatActivity {
             String password = editText_password.getText().toString();
             sb.append("&password=");
             sb.append(URLEncoder.encode(password, "UTF-8"));
-
-            Log.i("111 Register", sb.toString());
         }
         catch(Exception e) {
             Toast.makeText(v.getContext(), "Something wrong with the url" + e.getMessage(), Toast.LENGTH_LONG)
@@ -161,6 +161,12 @@ public class RegisterActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(result);
                 String status = (String) jsonObject.get("result");
                 if (status.equals("success")) {
+
+                    SharedPreferences sp = getSharedPreferences("Users", 0);
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("username", editText_username.getText().toString());
+                    editor.commit();
+
                     Toast.makeText(getApplicationContext(), "Register successfully added!"
                             , Toast.LENGTH_LONG)
                             .show();
