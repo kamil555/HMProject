@@ -2,28 +2,30 @@ package team6.tacoma.uw.edu.hmproject;
 
 import android.content.Context;
 import android.content.Intent;
+
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import android.support.v7.app.AppCompatActivity;
+
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import team6.tacoma.uw.edu.hmproject.book.Book;
 
 public class MainActivity extends AppCompatActivity {
     public static String key;
-
+    private ShareActionProvider mShare;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getSupportActionBar().hide();
-//        mBundle = new Bundle();
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         final SharedPreferences btnStatus = getSharedPreferences("BtnStatus", Context.MODE_PRIVATE);
         final SharedPreferences sp = getSharedPreferences("Users", Context.MODE_PRIVATE);
@@ -86,5 +88,34 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+//        MenuItem item = menu.findItem(R.id.action_share);
+//
+//        mShare = (ShareActionProvider)item.getActionProvider();
+
+        return true;
+    }
+
+//    private void setShareIntent (Intent shareIntent) {
+//        if (mShare != null) {
+//            mShare.setShareIntent(shareIntent);
+//        }
+//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

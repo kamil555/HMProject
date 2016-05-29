@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="team6.tacoma.uw.edu.hmproject.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <Button android:id="@+id/Add"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:text="Add a Book"/>
+
+        <Button android:id="@+id/MyBook"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:text="View My Book"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+
+        <Button android:id="@+id/button_search"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:text="Find a Book"/>
+
+        <Button android:id="@+id/button_View"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:text="View All Books" />
+
+    </LinearLayout>
+
+        <TextView android:id="@+id/txthelp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="need help? click here" />
+
+</LinearLayout>
