@@ -9,19 +9,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import team6.tacoma.uw.edu.hmproject.SQLite.SQLhelper;
 import team6.tacoma.uw.edu.hmproject.book.Book;
 
 public class SearchActivity extends AppCompatActivity implements SearchBookList.OnListFragmentInteractionListener{
-
+    SQLhelper myDB;
     public EditText editSearch;
     private Button btnSearch;
-
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        myDB = new SQLhelper(this);
 
         editSearch = (EditText)findViewById(R.id.txtSearch);
         btnSearch = (Button)findViewById(R.id.button_search_fuction);
@@ -43,6 +45,9 @@ public class SearchActivity extends AppCompatActivity implements SearchBookList.
                         .replace(R.id.SearchActivity_content, searchBookList)
                         .addToBackStack(null)
                         .commit();
+
+                //insert data in to sqlite
+                myDB.insertData(editSearch.getText().toString());
             }
         });
 
