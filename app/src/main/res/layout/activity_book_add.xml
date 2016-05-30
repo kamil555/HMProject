@@ -9,32 +9,32 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="inter your book title"
+        android:hint="enter your book title"
         android:id="@+id/add_book_title" />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="inter your book ISBN number"
+        android:hint="enter the last 6 digit of your book ISBN number"
         android:id="@+id/add_book_isbn" />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="inter your name"
+        android:hint="enter your name"
         android:id="@+id/add_owner" />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="inter your major"
+        android:hint="enter your major(EX: TCSS)"
         android:id="@+id/add_major" />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="inter your phone number"
+        android:hint="enter your phone number(EX: (XXX)XXXXXXX)"
         android:id="@+id/add_phone" />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="inter your Email address"
+        android:hint="enter your Email address(EX: example@uw.edu)"
         android:id="@+id/add_email" />
     <Button
         android:layout_width="wrap_content"
