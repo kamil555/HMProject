@@ -59,8 +59,8 @@ public class SearchBookList extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_book_list, container, false);
 
+        //init key is user's email
         Key_Word = MainActivity.key;
-
 
         if (view instanceof RecyclerView) {
             Context context = view.getContext();

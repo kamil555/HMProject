@@ -1,5 +1,7 @@
 package team6.tacoma.uw.edu.hmproject;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,7 +20,9 @@ public class ViewMyBookActivity extends AppCompatActivity implements SearchBookL
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        final SharedPreferences sp = getSharedPreferences("Users", Context.MODE_PRIVATE);
 
+        MainActivity.key = sp.getString("username",null);
         SearchBookList searchBookList = new SearchBookList();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.ViewMyBookContent, searchBookList)

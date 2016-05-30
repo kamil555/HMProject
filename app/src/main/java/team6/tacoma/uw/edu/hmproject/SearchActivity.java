@@ -48,7 +48,6 @@ public class SearchActivity extends AppCompatActivity implements SearchBookList.
 
     }
 
-
     @Override
     public void onListFragmentInteraction(Book item) {
         BookDetailFragment bookDetailFragment = new BookDetailFragment();

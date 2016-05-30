@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
         final SharedPreferences btnStatus = getSharedPreferences("BtnStatus", Context.MODE_PRIVATE);
         final SharedPreferences sp = getSharedPreferences("Users", Context.MODE_PRIVATE);
+
+        //init key is user's email
         key = sp.getString("username", null);
 
         Button button_Add =(Button) findViewById(R.id.Add);
