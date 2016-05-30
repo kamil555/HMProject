@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -40,6 +42,26 @@ public class RegisterActivity extends AppCompatActivity {
         editText_username = (EditText) findViewById(R.id.editText_username);
         editText_password = (EditText) findViewById(R.id.editText_password);
         button_register = (Button) findViewById(R.id.button_register);
+        final ImageView image = (ImageView)findViewById(R.id.imageView);
+
+        editText_username.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP)
+                    image.setImageResource(R.drawable.username);
+                return false;
+            }
+        });
+
+        editText_password.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP)
+                    image.setImageResource(R.drawable.password);
+                return false;
+            }
+        });
+
         final Button button_backToLogin = (Button) findViewById(R.id.button_backToLogin);
 
         button_register.setOnClickListener(new View.OnClickListener() {

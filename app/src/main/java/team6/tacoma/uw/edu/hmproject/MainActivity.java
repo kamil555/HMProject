@@ -1,19 +1,19 @@
 package team6.tacoma.uw.edu.hmproject;
 
-import android.content.Context;
-import android.content.Intent;
 
+import android.content.Context;
+
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.support.v7.app.AppCompatActivity;
-
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
@@ -97,25 +97,35 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-//        MenuItem item = menu.findItem(R.id.action_share);
-//
-//        mShare = (ShareActionProvider)item.getActionProvider();
-
         return true;
     }
 
-//    private void setShareIntent (Intent shareIntent) {
-//        if (mShare != null) {
-//            mShare.setShareIntent(shareIntent);
-//        }
-//    }
+
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
+        int id = item.getItemId();
+
+        if (id == R.id.action_share) {
+            shareFuction();
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    public void shareFuction() {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = "This app is really cool, get it in Google Play Store";
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+
     }
 
 }

@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -36,8 +38,33 @@ public class LoginActivity extends AppCompatActivity {
         final EditText editText_password = (EditText) findViewById(R.id.editText_password);
         final Button button_login = (Button) findViewById(R.id.button_login);
         final Button button_goToRegister = (Button) findViewById(R.id.button_goToRegister);
+        final ImageView image = (ImageView)findViewById(R.id.imageView);
 
 
+//        editText_username.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                image.setImageResource(R.drawable.username);
+//            }
+//        });
+//
+        editText_username.setOnTouchListener(new View.OnTouchListener() {
+           @Override
+           public boolean onTouch(View v, MotionEvent event) {
+               if (event.getAction() == MotionEvent.ACTION_UP)
+                   image.setImageResource(R.drawable.username);
+               return false;
+           }
+        });
+
+        editText_password.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP)
+                    image.setImageResource(R.drawable.password);
+                return false;
+            }
+        });
         if (button_login != null) {
             button_login.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -66,6 +93,9 @@ public class LoginActivity extends AppCompatActivity {
                         editText_password.requestFocus();
                         return;
                     }
+
+
+
                     mUsers = new Users(username, password);
                     new LoginTask().execute(new String[]{LOGIN_URL.toString()});
 
