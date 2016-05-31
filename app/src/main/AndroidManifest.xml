@@ -23,11 +23,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".BookAdd" />
-        <activity android:name=".BookActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".BookActivity"
+            android:label="View All Book"/>
+        <activity android:name=".RegisterActivity"
+            android:label="Register"/>
         <activity
             android:name=".SearchActivity"
-            android:label="Find My Book"
+            android:label="Search Book"
             android:parentActivityName=".SearchActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -36,7 +38,7 @@
         </activity>
         <activity
             android:name=".ViewMyBookActivity"
-            android:label="Find My Book"
+            android:label="View My Book"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

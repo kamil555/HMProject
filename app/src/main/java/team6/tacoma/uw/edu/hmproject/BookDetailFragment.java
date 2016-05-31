@@ -2,6 +2,7 @@ package team6.tacoma.uw.edu.hmproject;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -68,6 +69,7 @@ public class BookDetailFragment extends Fragment {
 
         final SharedPreferences sp = getActivity().getSharedPreferences("BtnStatus", Context.MODE_PRIVATE);
         btnStatus = sp.getString("DeleteButton", null);
+
         if(btnStatus == null) {
             Toast.makeText(getActivity(), "Error in get Button status!!! =)",
                     Toast.LENGTH_LONG).show();
@@ -79,6 +81,9 @@ public class BookDetailFragment extends Fragment {
                   public void onClick(View v) {
                       String url = DeleteURL(v);
                       delete(url);
+
+                      Intent intent = new Intent(getActivity(), ViewMyBookActivity.class);
+                      startActivity(intent);
                   }
               });
            } else {
@@ -119,13 +124,13 @@ public class BookDetailFragment extends Fragment {
     private String DeleteURL(View v) {
         StringBuilder sb = new StringBuilder(DELETE_URL);
         try {
-            String isbn = mIBSNTextView.getText().toString();
-            sb.append("isbn=");
-            sb.append(URLEncoder.encode(isbn, "UTF-8"));
+            String ISBN = mIBSNTextView.getText().toString();
+            sb.append("ISBN=");
+            sb.append(URLEncoder.encode(ISBN, "UTF-8"));
 
-            String email = mEmailTextView.getText().toString();
-            sb.append("&email=");
-            sb.append(URLEncoder.encode(email, "UTF-8"));
+            String Email = mEmailTextView.getText().toString();
+            sb.append("&Email=");
+            sb.append(URLEncoder.encode(Email, "UTF-8"));
         }
         catch(Exception e) {
             Toast.makeText(v.getContext(), "Something wrong with the url" + e.getMessage(), Toast.LENGTH_LONG)
@@ -162,7 +167,7 @@ public class BookDetailFragment extends Fragment {
                     }
 
                 } catch (Exception e) {
-                    response = "Unable to add users, Reason: "
+                    response = "Unable to Delete, Reason: "
                             + e.getMessage();
                 } finally {
                     if (urlConnection != null)
@@ -188,7 +193,7 @@ public class BookDetailFragment extends Fragment {
                 String status = (String) jsonObject.get("result");
                 if (status.equals("success")) {
 
-                    Toast.makeText(getActivity(), "Delete successfully added!"
+                    Toast.makeText(getActivity(), "Delete successfully !"
                             , Toast.LENGTH_LONG)
                             .show();
                 } else {

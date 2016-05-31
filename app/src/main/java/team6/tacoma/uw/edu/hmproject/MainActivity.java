@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
         final SharedPreferences btnStatus = getSharedPreferences("BtnStatus", Context.MODE_PRIVATE);
         final SharedPreferences sp = getSharedPreferences("Users", Context.MODE_PRIVATE);
+        SharedPreferences.Editor ed = btnStatus.edit();
+        ed.putString("DeleteButton", "null");
+        ed.commit();
 
         //init key is user's email
         key = sp.getString("username", null);
