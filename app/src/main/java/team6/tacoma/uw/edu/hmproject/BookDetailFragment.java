@@ -70,6 +70,8 @@ public class BookDetailFragment extends Fragment {
         final SharedPreferences sp = getActivity().getSharedPreferences("BtnStatus", Context.MODE_PRIVATE);
         btnStatus = sp.getString("DeleteButton", null);
 
+
+
         if(btnStatus == null) {
             Toast.makeText(getActivity(), "Error in get Button status!!! =)",
                     Toast.LENGTH_LONG).show();
@@ -79,10 +81,11 @@ public class BookDetailFragment extends Fragment {
               mDelete.setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      String url = DeleteURL(v);
+                      Bundle args = getArguments();
+                      String url = DeleteURL(v, (Book)args.getSerializable(BOOK_ITEM_SELECTED));
                       delete(url);
 
-                      Intent intent = new Intent(getActivity(), ViewMyBookActivity.class);
+                      Intent intent = new Intent(getActivity(), MainActivity.class);
                       startActivity(intent);
                   }
               });
@@ -121,14 +124,14 @@ public class BookDetailFragment extends Fragment {
         }
     }
 
-    private String DeleteURL(View v) {
+    private String DeleteURL(View v, Book b) {
         StringBuilder sb = new StringBuilder(DELETE_URL);
         try {
-            String ISBN = mIBSNTextView.getText().toString();
+            String ISBN = b.getmISBN();
             sb.append("ISBN=");
             sb.append(URLEncoder.encode(ISBN, "UTF-8"));
 
-            String Email = mEmailTextView.getText().toString();
+            String Email = b.getmEmail();
             sb.append("&Email=");
             sb.append(URLEncoder.encode(Email, "UTF-8"));
         }
