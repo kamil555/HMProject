@@ -11,17 +11,28 @@ import java.util.List;
 import team6.tacoma.uw.edu.hmproject.book.Book;
 
 /**
- * Created by Han on 5/24/16.
+ * Created by Han on 5/24/16, This class is for search feature of APP
  */
 public class MySearchRVAdapter extends RecyclerView.Adapter<MySearchRVAdapter.ViewHolder> {
     private final List<Book> mValues;
     private final SearchBookList.OnListFragmentInteractionListener mListener;
 
+    /**
+     * Constructor, attaches books and listener to variables
+     * @param items
+     * @param listener
+     */
     public MySearchRVAdapter(List<Book> items, SearchBookList.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
 
+    /**
+     * Initializes fields to be used by View
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -29,6 +40,11 @@ public class MySearchRVAdapter extends RecyclerView.Adapter<MySearchRVAdapter.Vi
         return new ViewHolder(view);
     }
 
+    /**
+     * Sets variables to specified book
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
@@ -51,11 +67,18 @@ public class MySearchRVAdapter extends RecyclerView.Adapter<MySearchRVAdapter.Vi
         });
     }
 
+    /**
+     * Gets count of books
+     * @return - count
+     */
     @Override
     public int getItemCount() {
         return mValues.size();
     }
 
+    /**
+     * Class for dealing with book variables
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mBookTitleView;
@@ -66,6 +89,10 @@ public class MySearchRVAdapter extends RecyclerView.Adapter<MySearchRVAdapter.Vi
         public final TextView mEmail;
         public Book mItem;
 
+        /**
+         * Constructor
+         * @param view
+         */
         public ViewHolder(View view) {
             super(view);
             mView = view;
@@ -77,6 +104,10 @@ public class MySearchRVAdapter extends RecyclerView.Adapter<MySearchRVAdapter.Vi
             mEmail = (TextView) view.findViewById(R.id.email);
         }
 
+        /**
+         * Creates string
+         * @return
+         */
         @Override
         public String toString() {
             return super.toString() + " '" + mIBSNView.getText() + "'";

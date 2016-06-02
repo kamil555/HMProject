@@ -6,21 +6,37 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-
+/**
+ * Class for making Users of App
+ */
 public class Users {
 
         private String mUsername;
         private String mPassword;
         public static final String USERNAME = "username", PASSWORD = "password";
 
-        Users(String username, String password){
+    /**
+     * Constructor that assigns variables
+     * @param username
+     * @param password
+     */
+    Users(String username, String password){
             this.mUsername = username;
             this.mPassword = password;
         }
 
+    /**
+     *  Returns Username
+     * @return - string
+     */
         String getUsername () {
             return mUsername;
         }
+
+    /**
+     *  Returns password
+     * @return - string
+     */
         String getPassword(){
             return mPassword;
         }

@@ -23,12 +23,22 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class used for Logging in
+ */
 public class LoginActivity extends AppCompatActivity {
 
+    // URL of database
     private static final String LOGIN_URL
             = "http://cssgate.insttech.washington.edu/~hw29/hmproject/han.php?cmd=users";
+    // User
     public Users mUsers;
 
+    /**
+     * Goes through process of logging in, everything from having
+     * user enter info, to pointing out errors, to clicking button
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,14 +50,6 @@ public class LoginActivity extends AppCompatActivity {
         final Button button_goToRegister = (Button) findViewById(R.id.button_goToRegister);
         final ImageView image = (ImageView)findViewById(R.id.imageView);
 
-
-//        editText_username.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                image.setImageResource(R.drawable.username);
-//            }
-//        });
-//
         editText_username.setOnTouchListener(new View.OnTouchListener() {
            @Override
            public boolean onTouch(View v, MotionEvent event) {
@@ -122,6 +124,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private class LoginTask extends AsyncTask<String, Void, String> {
 
+        /**
+         * Goes through process of logging into databse to check for and against users
+         * @param urls
+         * @return - string
+         */
         @Override
         protected String doInBackground(String... urls) {
             String response = "";
@@ -152,7 +159,10 @@ public class LoginActivity extends AppCompatActivity {
             return response;
         }
 
-
+        /**
+         * Trys to login against what is in databse of users
+         * @param result
+         */
         @Override
         protected void onPostExecute(String result) {
             // Something wrong with the network or the URL.

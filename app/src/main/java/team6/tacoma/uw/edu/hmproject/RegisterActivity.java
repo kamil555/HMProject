@@ -33,7 +33,11 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText editText_password;
     private Button button_register;
 
-
+    /**
+     * Goes through process of registering user, everything from having
+     * user enter info, to pointing out errors, to clicking button
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +116,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Checks to see if what was entered by user is expected
+     * @param v
+     * @return - string of username and password
+     */
     private String registerURL(View v) {
         StringBuilder sb = new StringBuilder(USER_ADD_URL);
         try {
@@ -132,12 +141,16 @@ public class RegisterActivity extends AppCompatActivity {
 
     private class RegisterTask extends AsyncTask<String, Void, String> {
 
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
         }
 
+        /**
+         * Trys to register user, checks against database
+         * @param urls
+         * @return - string saying success or no
+         */
         @Override
         protected String doInBackground(String... urls) {
             String response = "";
@@ -204,6 +217,11 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     * Initializes register process
+     * @param url
+     */
     public void register(String url){
         RegisterTask task = new RegisterTask();
         task.execute(new String[]{url.toString()});

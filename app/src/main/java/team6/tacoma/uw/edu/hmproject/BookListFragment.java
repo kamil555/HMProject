@@ -24,7 +24,6 @@ import team6.tacoma.uw.edu.hmproject.book.Book;
 
 /**
  * A fragment representing a list of Items.
- * <p/>
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
@@ -40,8 +39,7 @@ public class BookListFragment extends Fragment {
             = "http://cssgate.insttech.washington.edu/~hw29/hmproject/han.php?cmd=booklist";
 
     /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
+     * Empty constructor for the fragment manager to instantiate the fragment.
      */
     public BookListFragment() {
     }
@@ -56,6 +54,10 @@ public class BookListFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * Fills the Book list fragment
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +67,14 @@ public class BookListFragment extends Fragment {
         }
     }
 
+    /**
+     * This combines the book list fragment into a container that can be put
+     * in and viewed through the app
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return what will be seen in the app
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -88,6 +98,10 @@ public class BookListFragment extends Fragment {
     }
 
 
+    /**
+     * Attaches listener
+     * @param context
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -99,6 +113,9 @@ public class BookListFragment extends Fragment {
         }
     }
 
+    /**
+     * detaches listener
+     */
     @Override
     public void onDetach() {
         super.onDetach();
@@ -119,7 +136,16 @@ public class BookListFragment extends Fragment {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Book item);
     }
+
+    /**
+     * private class for managing list of books
+     */
     private class DownloadBookListTask extends AsyncTask<String, Void, String> {
+
+        /**
+         * Creates list of Books
+         * @param result
+         */
         @Override
         protected void onPostExecute(String result) {
             // Something wrong with the network or the URL.
@@ -138,12 +164,17 @@ public class BookListFragment extends Fragment {
                 return;
             }
 
-            // Everything is good, show the list of courses.
+            // Everything is good, show the list of books.
             if (!bookList.isEmpty()) {
                 mRecyclerView.setAdapter(new MybookRecyclerViewAdapter(bookList, mListener));
             }
         }
 
+        /**
+         * Returns a string on how downloading list of book is going
+         * @param urls
+         * @return - String
+         */
         @Override
         protected String doInBackground(String... urls) {
             String response = "";

@@ -11,8 +11,15 @@ import android.view.View;
 
 import team6.tacoma.uw.edu.hmproject.book.Book;
 
+/**
+ * Code for returning list of User's books
+ */
 public class ViewMyBookActivity extends AppCompatActivity implements SearchBookList.OnListFragmentInteractionListener{
 
+    /**
+     * Goes into database, finds books associated with "username"
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +39,10 @@ public class ViewMyBookActivity extends AppCompatActivity implements SearchBookL
     }
 
 
+    /**
+     *  Retuns selected book to list of books to show
+     * @param item
+     */
     @Override
     public void onListFragmentInteraction(Book item) {
         BookDetailFragment bookDetailFragment = new BookDetailFragment();

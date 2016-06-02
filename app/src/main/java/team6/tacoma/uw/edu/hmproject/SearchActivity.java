@@ -14,6 +14,9 @@ import android.widget.Toast;
 import team6.tacoma.uw.edu.hmproject.SQLite.SQLhelper;
 import team6.tacoma.uw.edu.hmproject.book.Book;
 
+/**
+ * This class is for Searching for books (Like a parent class for SearchBookList)
+ */
 public class SearchActivity extends AppCompatActivity implements SearchBookList.OnListFragmentInteractionListener{
     SQLhelper myDB;
     public EditText editSearch;

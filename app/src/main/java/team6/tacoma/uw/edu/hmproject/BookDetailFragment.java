@@ -33,27 +33,48 @@ import team6.tacoma.uw.edu.hmproject.book.Book;
 
 
 /**
+ * Created by Mark on 5/3/16
  * A simple {@link Fragment} subclass.
  */
 public class BookDetailFragment extends Fragment {
 
 
+    // Book title
     private TextView mBookTitleTextView;
+    // Book ISBN number
     private TextView mIBSNTextView;
+    // Book owner name
     private TextView mOwnerTextView;
+    // College major book associated with
     private TextView mMajorTextView;
+    // Book owner phone number
     private TextView mPhoneTitleTextView;
+    // Book owner email
     private TextView mEmailTextView;
+    // Button
     private Button mDelete;
+    // Button status
     private String btnStatus;
+    // String associated with selected book
     public static String BOOK_ITEM_SELECTED = "bookItemSelected";
+    // URL of database delete
     private static String DELETE_URL
             = "http://cssgate.insttech.washington.edu/~hw29/hmproject/delete.php?";
 
+    /**
+     * Constructor required
+     */
     public BookDetailFragment() {
         // Required empty public constructor
     }
 
+    /**
+     * Created view of book info with delete button, on an interactive level.
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return - the app view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -96,7 +117,10 @@ public class BookDetailFragment extends Fragment {
         return view;
     }
 
-
+    /**
+     * Updates the app when book is changed or updated
+     * @param book
+     */
     public void updateView(Book book) {
         if (book != null) {
             mBookTitleTextView.setText("Book Title: "+book.getmBook_title());
@@ -109,6 +133,9 @@ public class BookDetailFragment extends Fragment {
         }
     }
 
+    /**
+     * During startup, check if there are arguments passed to the fragment.
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -124,6 +151,11 @@ public class BookDetailFragment extends Fragment {
         }
     }
 
+    /**
+     * Deletes book from databse
+     * @param v
+     * @return - string
+     */
     private String DeleteURL(View v, Book b) {
         StringBuilder sb = new StringBuilder(DELETE_URL);
         try {
@@ -142,14 +174,24 @@ public class BookDetailFragment extends Fragment {
         return sb.toString();
     }
 
+    /**
+     * Private subclass for deleting book
+     */
     private class DeleteTask extends AsyncTask<String, Void, String> {
 
-
+        /**
+         * Like a constructor, runs constructor
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
         }
 
+        /**
+         * Goes through list of strings and runs the process. Returns status.
+         * @param urls
+         * @return - string
+         */
         @Override
         protected String doInBackground(String... urls) {
             String response = "";
@@ -211,6 +253,11 @@ public class BookDetailFragment extends Fragment {
             }
         }
     }
+
+    /**
+     * Deletes item from database
+     * @param url
+     */
     public void delete(String url){
         DeleteTask task = new DeleteTask();
         task.execute(new String[]{url.toString()});

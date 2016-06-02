@@ -24,20 +24,29 @@ import java.util.List;
 
 import team6.tacoma.uw.edu.hmproject.book.Book;
 
+/**
+ * Searches through book list
+ */
 public class SearchBookList extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private RecyclerView mRecyclerView;
     private static String SEARCH_URL
             = "http://cssgate.insttech.washington.edu/~hw29/hmproject/search1.php?KeyWord=";
     public static String Key_Word = null;
+
+    /**
+     * Constructor required
+     */
     public SearchBookList() {
-        // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
+    /**
+     * Constructor that returns fragment and params for searching
+     * @param columnCount
+     * @return - list of books
+     */
     public static SearchBookList newInstance(int columnCount) {
         SearchBookList fragment = new SearchBookList();
         Bundle args = new Bundle();
@@ -46,6 +55,10 @@ public class SearchBookList extends Fragment {
         return fragment;
     }
 
+    /**
+     *  Creates the Search activity
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +67,13 @@ public class SearchBookList extends Fragment {
         }
     }
 
+    /**
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return - View of search activity
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -75,8 +95,12 @@ public class SearchBookList extends Fragment {
         DownloadSearchListTask task = new DownloadSearchListTask();
         task.execute(new String[]{SEARCH_URL+Key_Word});
         return view;
-        
     }
+
+    /**
+     * puts params into search specifications
+     * @param context
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -88,20 +112,28 @@ public class SearchBookList extends Fragment {
         }
     }
 
+    /**
+     * Stops search and resets
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
-
+    /**
+     * Listener is used to attach params to search
+     */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(Book item);
     }
 
     private class DownloadSearchListTask extends AsyncTask<String, Void, String> {
 
+        /**
+         * Goes through list returned from search and creates list for viewing
+         * @param result
+         */
         @Override
         protected void onPostExecute(String result) {
             // Something wrong with the network or the URL.
@@ -126,7 +158,11 @@ public class SearchBookList extends Fragment {
             }
         }
 
-
+        /**
+         * Goes through list of books in database and finds matches
+         * @param urls
+         * @return
+         */
         @Override
         protected String doInBackground(String... urls) {
             String response = "";

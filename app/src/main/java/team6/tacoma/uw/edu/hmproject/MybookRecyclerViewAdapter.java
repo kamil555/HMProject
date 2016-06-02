@@ -21,12 +21,23 @@ public class MybookRecyclerViewAdapter extends RecyclerView.Adapter<MybookRecycl
     private final BookListFragment.OnListFragmentInteractionListener mListener;
 //    public final SearchBookList.OnListFragmentInteractionListener nListener;
 
+    /**
+     * Constructor, attaches books to listeners to variables
+     * @param items
+     * @param listener
+     */
     public MybookRecyclerViewAdapter(List<Book> items, BookListFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
 
 
+    /**
+     * initializes fields to be used by RecyclerView
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -34,6 +45,11 @@ public class MybookRecyclerViewAdapter extends RecyclerView.Adapter<MybookRecycl
         return new ViewHolder(view);
     }
 
+    /**
+     * Sets variables of Book
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
@@ -56,11 +72,18 @@ public class MybookRecyclerViewAdapter extends RecyclerView.Adapter<MybookRecycl
         });
     }
 
+    /**
+     * Gets book count
+     * @return - number
+     */
     @Override
     public int getItemCount() {
         return mValues.size();
     }
 
+    /**
+     * Inner class to deal with book info
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mBookTitleView;
@@ -71,6 +94,10 @@ public class MybookRecyclerViewAdapter extends RecyclerView.Adapter<MybookRecycl
         public final TextView mEmail;
         public Book mItem;
 
+        /**
+         * constructor that collects book info and assigns to book
+         * @param view
+         */
         public ViewHolder(View view) {
             super(view);
             mView = view;
@@ -82,6 +109,10 @@ public class MybookRecyclerViewAdapter extends RecyclerView.Adapter<MybookRecycl
             mEmail = (TextView) view.findViewById(R.id.email);
         }
 
+        /**
+         * creates string of book item info
+         * @return - string
+         */
         @Override
         public String toString() {
             return super.toString() + " '" + mIBSNView.getText() + "'";

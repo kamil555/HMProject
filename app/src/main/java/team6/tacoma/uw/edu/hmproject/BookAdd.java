@@ -1,6 +1,8 @@
 package team6.tacoma.uw.edu.hmproject;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,16 +24,26 @@ import java.net.URLEncoder;
 
 
 public class BookAdd extends AppCompatActivity {
+    // location of database
     private  final static String BOOK_ADD_URL =
             "http://cssgate.insttech.washington.edu/~hw29/hmproject/addBook.php?";
+    // Book title
     private EditText text_addBookTitle;
+    // Book ISBN
     private EditText text_addISBN;
+    // Book owner name
     private EditText text_addOwner;
+    // Book subject
     private EditText text_addMajor;
+    // Book owner phone number
     private EditText text_addPh;
+    // Book owner email address
     private EditText text_addEmail;
 
-
+    /**
+     * Creates book and assigns book to database, on a interactive level
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +54,6 @@ public class BookAdd extends AppCompatActivity {
         text_addOwner =(EditText) findViewById(R.id.add_owner);
         text_addMajor =(EditText) findViewById(R.id.add_major);
         text_addPh =(EditText) findViewById(R.id.add_phone);
-        text_addEmail =(EditText) findViewById(R.id.add_email);
 
         Button btn_AddBook = (Button)findViewById(R.id.add_book_button);
         btn_AddBook.setOnClickListener(new View.OnClickListener() {
@@ -53,10 +64,10 @@ public class BookAdd extends AppCompatActivity {
                 final String Owner = text_addOwner.getText().toString();
                 final String Major = text_addMajor.getText().toString();
                 final String Phone_No = text_addPh.getText().toString();
-                final String Email = text_addEmail.getText().toString();
+//                final String Email = sp.getString("username", null);
 
                 if (Book_title.length() < 1 || ISBN.length() < 1 || Owner.length() < 1 ||
-                        Major.length() < 1 || Phone_No.length() < 1 || Email.length() < 1) {
+                        Major.length() < 1 || Phone_No.length() < 1 ) {
                     Toast.makeText(v.getContext(), "Please inter a valid information", Toast.LENGTH_SHORT).show();
                     text_addBookTitle.requestFocus();
                     return;
@@ -72,6 +83,11 @@ public class BookAdd extends AppCompatActivity {
         });
     }
 
+    /**
+     * Creates a string of Book info
+     * @param v - book info
+     * @return - string of book and info
+     */
     private String addBookURL(View v) {
         StringBuilder sb = new StringBuilder(BOOK_ADD_URL);
         try{
@@ -79,23 +95,24 @@ public class BookAdd extends AppCompatActivity {
             sb.append("Book_title=");
             sb.append(URLEncoder.encode(addBook_title,"UTF-8"));
 
-            String addISBN = text_addBookTitle.getText().toString();
+            String addISBN = text_addISBN.getText().toString();
             sb.append("&ISBN=");
             sb.append(URLEncoder.encode(addISBN,"UTF-8"));
 
-            String addOwner = text_addBookTitle.getText().toString();
+            String addOwner = text_addOwner.getText().toString();
             sb.append("&Owner=");
             sb.append(URLEncoder.encode(addOwner,"UTF-8"));
 
-            String addMajor  = text_addBookTitle.getText().toString();
+            String addMajor  = text_addMajor.getText().toString();
             sb.append("&Major=");
             sb.append(URLEncoder.encode(addMajor,"UTF-8"));
 
-            String addPhone_no  = text_addBookTitle.getText().toString();
+            String addPhone_no  = text_addPh.getText().toString();
             sb.append("&Phone_no=");
             sb.append(URLEncoder.encode(addPhone_no,"UTF-8"));
 
-            String addEmail = text_addBookTitle.getText().toString();
+            final SharedPreferences sp = getApplication().getSharedPreferences("Users", 0);
+            String addEmail = sp.getString("username", null);
             sb.append("&Email=");
             sb.append(URLEncoder.encode(addEmail,"UTF-8"));
 
@@ -106,12 +123,21 @@ public class BookAdd extends AppCompatActivity {
         return sb.toString();
     }
 
+    /**
+     * inner class for adding book to database
+     */
     private class addTask extends AsyncTask<String, Void, String> {
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
         }
 
+        /**
+         * Creates a string response to action as book is added to database
+         * @param urls
+         * @return - string
+         */
         @Override
         protected String doInBackground(String... urls) {
             String response = "";
@@ -173,8 +199,13 @@ public class BookAdd extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method for adding string of book info
+     * @param url
+     */
     public void add(String url){
         addTask task = new addTask();
         task.execute(new String[]{url.toString()});
     }
 }
+
