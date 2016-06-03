@@ -66,8 +66,8 @@ public class BookAdd extends AppCompatActivity {
                 final String Phone_No = text_addPh.getText().toString();
 //                final String Email = sp.getString("username", null);
 
-                if (Book_title.length() < 1 || ISBN.length() < 1 || Owner.length() < 1 ||
-                        Major.length() < 1 || Phone_No.length() < 1 ) {
+                if (Book_title.length() < 1 || ISBN.length() < 6 || Owner.length() < 1 ||
+                        Major.length() < 1 || Phone_No.length() < 10 ) {
                     Toast.makeText(v.getContext(), "Please inter a valid information", Toast.LENGTH_SHORT).show();
                     text_addBookTitle.requestFocus();
                     return;

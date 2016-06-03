@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     public static String key;
     private ShareActionProvider mShare;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
