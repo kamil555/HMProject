@@ -1,10 +1,7 @@
-# HMProject
-HMProject
-Find my Book
-TCSS 450 B
-Team 4
-Han Wang
-Mark Johnson
+### HMProject
+
+#Find my Book
+
 Abstract:
 We propose an application where UW students can find required text books for
 rent/sale, from other UW students. This app will enable students to get text books at a
